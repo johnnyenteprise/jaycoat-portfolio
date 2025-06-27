@@ -1,0 +1,13 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #5b9ee0;
+}
+
+h1, h3 {
+  color: #0d6efd;
+}
+
+a {
+  text-decoration: none;
+  color: #0d6efd;
+}
