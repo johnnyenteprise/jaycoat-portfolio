@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay-Coat | Software Engineer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { scroll-behavior: smooth; }
+    .hero { height: 100vh; background: #111; color: #fff; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+    .section { padding: 60px 0; }
+    .navbar { background-color: #000 !important; }
+    .navbar a { color: #fff !important; }
+    .project-card img { max-height: 200px; object-fit: cover; }
+    footer { background-color: #111; color: #fff; padding: 20px 0; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Jay-Coat</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <h1>Hi, I'm Asein (Jay-Coat)</h1>
+  <p class="lead">Software Engineer | Web Developer | Solution to my Nation</p>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4 ">About Me</h2>
+    <p class="text-center">I'm a Front-End developer who builds responsive, dynamic websites using PHP, MySQL, Bootstrap, and modern web tools. <br> I'm a solution to my generation solving problems and bringing ideas to life on the web.</p>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="text-center mb-4">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card project-card">
+          <img src="images/project1.jpg" class="card-img-top" alt="Photo Gallery">
+          <div class="card-body">
+            <h5 class="card-title">Photo Gallery</h5>
+            <p class="card-text">A dynamic image gallery built with PHP, Bootstrap, and MySQL, complete with admin upload dashboard.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card">
+          <img src="images/project2.jpg" class="card-img-top" alt="Login System">
+          <div class="card-body">
+            <h5 class="card-title">Login System with 2FA</h5>
+            <p class="card-text">Secure login system using email-based 2FA and session handling with PHP & MySQL.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card">
+          <img src="images/project3.jpg" class="card-img-top" alt="Admin Dashboard">
+          <div class="card-body">
+            <h5 class="card-title">Admin Dashboard</h5>
+            <p class="card-text">A responsive dashboard for managing content, complete with pagination, filtering, and media uploads.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Me</h2>
+    <form class="row g-3 justify-content-center">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Your Name" required />
+      </div>
+      <div class="col-md-6">
+        <input type="email" class="form-control" placeholder="Your Email" required />
+      </div>
+      <div class="col-12">
+        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Jay-Coat Portfolio. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
