@@ -50,3 +50,20 @@
 
 })(jQuery);
 
+    // Role text swapper: cycles through roles in the #role-swapper element
+    (function () {
+        var roles = ["Software Engineer", "Web Developer", "IT Instructor"];
+        var idx = 0;
+        // Ensure initial text is the first role
+        var $el = $('#role-swapper');
+        if ($el.length) {
+            $el.text(roles[0]);
+            setInterval(function () {
+                idx = (idx + 1) % roles.length;
+                $el.fadeOut(200, function () {
+                    $el.text(roles[idx]).fadeIn(200);
+                });
+            }, 3000);
+        }
+    })();
+            
