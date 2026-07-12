@@ -52,7 +52,7 @@
 
     // Role text swapper: cycles through roles in the #role-swapper element
     (function () {
-        var roles = ["Software Engineer", "Web Developer", "IT Instructor"];
+        var roles = ["Software Engineer", "Web Developer", "Front-End Developer", "IT Instructor"];
         var idx = 0;
         // Ensure initial text is the first role
         var $el = $('#role-swapper');
@@ -66,4 +66,4 @@
             }, 3000);
         }
     })();
-            
+
