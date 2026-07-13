@@ -1,0 +1,3 @@
+[build]
+  publish = "jaycoat-portfolio"
+  command = ""
