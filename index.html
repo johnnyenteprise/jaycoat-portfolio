@@ -29,17 +29,86 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+
+        <style>
+            body.loader-active {
+                overflow: hidden;
+            }
+
+            .site-loader {
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+                transition: opacity 0.4s ease, visibility 0.4s ease;
+            }
+
+            .site-loader.is-hidden {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .site-loader .loader-card {
+                width: min(90vw, 420px);
+                padding: 28px 24px;
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            }
+
+            .site-loader .progress-bar {
+                width: 100%;
+                height: 30px;
+                background: rgba(255, 255, 255, 0.18);
+                border-radius: 999px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .site-loader .bar-fill {
+                width: 0%;
+                height: 100%;
+                background: linear-gradient(90deg, #024abf 0%, #2b6fd6 100%);
+                transition: width 0.06s linear;
+            }
+
+            .site-loader .percent {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+                font-weight: 700;
+                color: #fff;
+                font-size: 0.95rem;
+            }
+
+            .site-loader .status {
+                display: block;
+                margin-top: 15px;
+                text-align: center;
+                font-size: 1rem;
+                color: #e5e7eb;
+            }
+        </style>
     </head>
 
     <body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
+        <div id="siteLoader" class="site-loader">
+            <div class="loader-card">
+                <div class="progress-bar">
+                    <div class="bar-fill"></div>
+                    <div class="percent">0%</div>
+                </div>
+                <span class="status">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
@@ -733,6 +802,45 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script>
+            const loader = document.getElementById('siteLoader');
+            const fill = document.querySelector('.bar-fill');
+            const percent = document.querySelector('.percent');
+            const status = document.querySelector('.status');
+
+            document.body.classList.add('loader-active');
+
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                progress++;
+
+                fill.style.width = progress + '%';
+                percent.textContent = progress + '%';
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    status.textContent = "completed!";
+                    status.style.color = "#024abf";
+                }
+            }, 300);
+
+            const finishLoader = () => {
+                clearInterval(interval);
+                progress = 100;
+                fill.style.width = '100%';
+                percent.textContent = '100%';
+                status.textContent = 'Completed!';
+                status.style.color = '#22c55e';
+
+                setTimeout(() => {
+                    loader.classList.add('is-hidden');
+                    document.body.classList.remove('loader-active');
+                }, 250);
+            };
+
+            window.addEventListener('load', finishLoader);
+        </script>
     </body>
 
 </html>
