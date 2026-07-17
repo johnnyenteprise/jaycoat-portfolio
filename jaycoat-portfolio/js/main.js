@@ -47,6 +47,56 @@
         return false;
     });
 
+    // Portfolio stats counter animation
+    var portfolioStats = function () {
+        var statsSection = document.getElementById('portfolioStats');
+        var hasAnimated = false;
+
+        if (!statsSection) return;
+
+        function animateCounters() {
+            $('.counter').each(function () {
+                var $this = $(this);
+                var target = parseInt($this.attr('data-target'), 10) || 0;
+                var duration = 1600;
+                var current = 0;
+                var stepTime = Math.max(Math.floor(duration / target), 15);
+
+                var timer = setInterval(function () {
+                    current += 1;
+                    $this.text(current);
+                    if (current >= target) {
+                        clearInterval(timer);
+                        $this.text(target);
+                    }
+                }, stepTime);
+            });
+        }
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateCounters();
+                        hasAnimated = true;
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer.observe(statsSection);
+        } else {
+            $(window).on('scroll', function () {
+                if (hasAnimated) return;
+                var top = statsSection.getBoundingClientRect().top;
+                if (top < window.innerHeight * 0.8) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            });
+        }
+    };
+    portfolioStats();
 
 })(jQuery);
 
